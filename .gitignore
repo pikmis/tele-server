@@ -1,0 +1,5 @@
+# runtime data: db.json contains the admin token and your accounts
+data/
+node_modules/
+*.log
+*.tmp
