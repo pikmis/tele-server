@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tele · admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=block">
+  <link rel="stylesheet" href="/admin/assets/css/tokens.css">
+  <link rel="stylesheet" href="/admin/assets/css/base.css">
+  <link rel="stylesheet" href="/admin/assets/css/components.css">
+  <link rel="stylesheet" href="/admin/assets/css/layout.css">
+</head>
+<body>
+  <section id="login" class="login">
+    <div class="login-card">
+      <span class="msym brand-mark">send</span>
+      <h1 class="headline-small">tele · admin</h1>
+      <p class="body-medium muted">Введите админ-токен из переменной ADMIN_TOKEN или из журнала сервера.</p>
+      <div class="tf">
+        <input id="tok" class="tf-input" type="password" autocomplete="off">
+        <label class="tf-label" for="tok">Админ-токен</label>
+      </div>
+      <button class="btn filled" data-action="login">Войти</button>
+    </div>
+  </section>
+
+  <div id="app" class="app hidden">
+    <nav class="rail" aria-label="Разделы">
+      <div class="rail-brand"><span class="msym">send</span></div>
+      <div id="nav" class="rail-items"></div>
+    </nav>
+    <main id="view" class="view"></main>
+  </div>
+
+  <dialog id="dlg" class="dialog"></dialog>
+  <div id="snackbar" class="snackbar" role="status" aria-live="polite"></div>
+
+  <script type="module" src="/admin/js/main.js"></script>
+</body>
+</html>

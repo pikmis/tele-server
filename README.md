@@ -85,10 +85,29 @@ sudo systemctl restart tele-server  # перезапуск после обнов
 ## Структура
 
 ```
-server.js          сервер (API для клиента и админки)
-public/admin.html  админ-панель
-data/              создаётся сам: db.json, dumps/, photos/ (не коммитится)
+server.js                    сервер: API для клиента tele и раздача админки
+public/
+  index.html                 оболочка админки
+  assets/css/
+    tokens.css               цвета, формы, элевация Material 3
+    base.css                 сброс, типографика, иконки
+    components.css           кнопки, поля, карточки, диалоги, таблицы
+    layout.css               навигация, сетка, адаптив
+  js/
+    main.js                  вход, навигация, диспетчер действий
+    core/                    без привязки к экранам
+      store.js               общее состояние
+      api.js                 запросы к /admin/api
+      dom.js                 esc, иконки, даты, файлы
+      ui.js                  HTML-компоненты Material 3
+      dialog.js              модальные окна и подтверждения
+      snackbar.js            всплывающие сообщения
+    views/                   по экрану на раздел
+      peers.js  aliases.js  notices.js  reports.js  settings.js
+data/                        создаётся сам: db.json, dumps/, photos/ (не коммитится)
 ```
+
+Админка написана на ES-модулях без сборки и внешних зависимостей. Шрифты Roboto и Material Symbols подгружаются с Google Fonts.
 
 ## Что умеет
 

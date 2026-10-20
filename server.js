@@ -359,12 +359,28 @@ async function pub(req, res, url) {
   send(res, 404, 'Not found');
 }
 
+// Static files for the admin panel (public/). Paths outside public/ are refused.
+const PUBLIC = path.join(__dirname, 'public');
+const MIME = {
+  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
+  '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.ico': 'image/x-icon',
+};
+function serveStatic(res, rel) {
+  const file = path.join(PUBLIC, path.normalize(rel));
+  if (!file.startsWith(PUBLIC + path.sep)) return send(res, 404, 'Not found');
+  fs.readFile(file, (err, buf) => {
+    if (err) return send(res, 404, 'Not found');
+    res.writeHead(200, { 'content-type': MIME[path.extname(file)] || 'application/octet-stream', 'cache-control': 'no-cache' });
+    res.end(buf);
+  });
+}
+
 http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');
   try {
-    if (url.pathname === '/admin' || url.pathname === '/admin/')
-      return send(res, 200, fs.readFileSync(path.join(__dirname, 'public', 'admin.html')), { 'content-type': 'text/html; charset=utf-8' });
+    if (url.pathname === '/admin' || url.pathname === '/admin/') return serveStatic(res, 'index.html');
     if (url.pathname.startsWith('/admin/api/')) return await admin(req, res, url);
+    if (url.pathname.startsWith('/admin/')) return serveStatic(res, url.pathname.slice('/admin/'.length));
     await pub(req, res, url);
   } catch (e) {
     send(res, e.code === 413 ? 413 : e.code === 400 ? 400 : 500, { error: e.message });

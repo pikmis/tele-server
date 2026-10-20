@@ -1,0 +1,45 @@
+/* Material Design 3 — dark scheme tokens (baseline palette, blue primary) */
+:root {
+  color-scheme: dark;
+
+  --md-primary: #a8c7ff;
+  --md-on-primary: #062e6f;
+  --md-primary-container: #0b4595;
+  --md-on-primary-container: #d8e2ff;
+
+  --md-secondary-container: #3e4759;
+  --md-on-secondary-container: #dae2f9;
+
+  --md-error: #ffb4ab;
+  --md-on-error: #690005;
+  --md-error-container: #93000a;
+
+  --md-success: #8fdc9a;
+  --md-warning: #f2c27a;
+
+  --md-surface: #111318;
+  --md-surface-container-lowest: #0c0e13;
+  --md-surface-container-low: #1a1c21;
+  --md-surface-container: #1e2025;
+  --md-surface-container-high: #282a2f;
+  --md-surface-container-highest: #33353a;
+  --md-on-surface: #e2e2e9;
+  --md-on-surface-variant: #c4c6d0;
+  --md-outline: #8e9099;
+  --md-outline-variant: #44474f;
+  --md-inverse-surface: #e2e2e9;
+  --md-inverse-on-surface: #2f3033;
+  --md-scrim: #000000;
+
+  --md-shape-xs: 4px;
+  --md-shape-sm: 8px;
+  --md-shape-md: 12px;
+  --md-shape-lg: 16px;
+  --md-shape-xl: 28px;
+  --md-shape-full: 999px;
+
+  --md-elev-1: 0 1px 2px rgba(0, 0, 0, .3), 0 1px 3px 1px rgba(0, 0, 0, .15);
+  --md-elev-3: 0 4px 8px 3px rgba(0, 0, 0, .15), 0 1px 3px rgba(0, 0, 0, .3);
+  --md-motion: cubic-bezier(.2, 0, 0, 1);
+  --md-font: Roboto, "Segoe UI", system-ui, sans-serif;
+}
